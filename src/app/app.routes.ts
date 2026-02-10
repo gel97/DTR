@@ -4,6 +4,8 @@ import { Home } from './features/home/home';
 import { home_routes } from './features/home/home.routes';
 import { AuthLayout } from './layout/auth-layout/auth-layout';
 import { contact_routes } from './features/contact/contact.routes';
+import { recipe_routes } from './features/recipe/recipe.routes';
+
 export const routes: Routes = [
   {
     path: 'login',
@@ -14,7 +16,8 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       ...home_routes,
-      ...contact_routes
+      ...contact_routes,
+      ...recipe_routes
     ]
   }
 ];
