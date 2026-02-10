@@ -1,2 +1,9 @@
-<app-sidebar></app-sidebar>
-<p>main-layout works!</p>
+<!-- component -->
+<body class="font-poppins antialiased">
+  <div id="view" class="h-full w-screen flex flex-row" x-data="{ sidenav: true }">
+    <app-sidebar></app-sidebar>
+    <div class="p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</body>
