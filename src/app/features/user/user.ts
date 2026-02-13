@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule
@@ -55,10 +55,21 @@ export class User implements OnInit {
   ];
 
   users = this.userService.users;
+  searchTerm = signal('');
 
   ngOnInit(): void {
     this.getUsers();
   }
+
+  filteredUsers = computed(() => {
+    const term = this.searchTerm().toLowerCase();
+    return this.users().data.filter(
+      (user:any) =>
+        user.firstName.toLowerCase().includes(term) ||
+        user.lastName.toLowerCase().includes(term) ||
+        user.email.toLowerCase().includes(term)
+    );
+  });
 
   getUsers(){
     this.userService.getUsers();
