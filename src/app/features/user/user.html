@@ -1,0 +1,6 @@
+
+
+<app-card title="Users">
+  <button matButton="filled" (click)="isAdd = true;openUserDialog()" class="my-2">Add User</button>
+  <app-table [columns]="columns" [data]="users().data" (actionClicked)="onHandleAction($event)"/>
+</app-card>

@@ -1,0 +1,29 @@
+<mat-form-field class="w-full mt-6" appearance="outline">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [type]="type"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [errorStateMatcher]="matcher"
+  />
+
+  @if (control.hasError('required')) {
+    <mat-error>This field is required</mat-error>
+  }
+
+  @if (control.hasError('email')) {
+    <mat-error>Please enter a valid email address</mat-error>
+  }
+
+  @if(control.hasError('minlength')){
+    <mat-error>Minimum length is {{ control.errors?.['minlength']?.requiredLength }} characters
+    </mat-error>
+  }
+
+  @if(control.hasError('maxlength')){
+    <mat-error>Maximum length is {{ control.errors?.['maxlength']?.requiredLength }} characters
+    </mat-error>
+  }
+
+</mat-form-field>

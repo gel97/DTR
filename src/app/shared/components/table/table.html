@@ -1,0 +1,39 @@
+
+<table mat-table [dataSource]="dataSource" matSort class="custom-table mat-elevation-z8">
+
+  <ng-container *ngFor="let col of columns" [matColumnDef]="col.key">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ col.label }}
+    </th>
+    <td mat-cell *matCellDef="let row" >
+
+      <!-- NORMAL TEXT -->
+       @if(col.type !== 'actions'){
+        {{ getNestedValue(row, col.key) }}
+       }
+
+      <!-- ACTION BUTTONS -->
+       @if(col.type === 'actions'){
+        <button
+          *ngFor="let btn of col.actions"
+          mat-icon-button
+          [color]="btn.color || 'primary'"
+          (click)="onAction(btn.action, row)"
+        >
+
+          <mat-icon *ngIf="btn.icon" [color]="btn.color || 'primary'">{{ btn.icon }}</mat-icon>
+          <span *ngIf="!btn.icon">{{ btn.label }}</span>
+        </button>
+       }
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[10,20,30,100]">
+</mat-paginator>

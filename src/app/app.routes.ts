@@ -5,6 +5,7 @@ import { home_routes } from './features/home/home.routes';
 import { AuthLayout } from './layout/auth-layout/auth-layout';
 import { contact_routes } from './features/contact/contact.routes';
 import { recipe_routes } from './features/recipe/recipe.routes';
+import { user_routes } from './features/user/user.routes';
 
 export const routes: Routes = [
   {
@@ -17,7 +18,8 @@ export const routes: Routes = [
     children: [
       ...home_routes,
       ...contact_routes,
-      ...recipe_routes
+      ...recipe_routes,
+      ...user_routes
     ]
   }
 ];
