@@ -1,41 +1,22 @@
 <h2 mat-dialog-title>{{ data.isAdd ? 'Add User' : 'Edit User' }}</h2>
 <form [formGroup]="userForm">
   <mat-dialog-content>
-    <app-input-field
-      label="First Name"
-      placeholder=""
-      type="text"
-      [control]="userForm.controls.firstName"
-    />
-    <app-input-field
-      label="Last Name"
-      placeholder=""
-      type="text"
-      [control]="userForm.controls.lastName"
-      />
-    <app-input-field
-      label="Email"
-      placeholder=""
-      type="email"
-      [control]="userForm.controls.email"
-    />
-    <app-input-field
-      label="Company"
-      placeholder=""
-      type="text"
-      [control]="userForm.controls.company.controls.name"
-    />
-
+    <app-input-field label="First Name" placeholder="" type="text" [control]="userForm.controls.firstName" />
+    <app-input-field label="Last Name" placeholder="" type="text" [control]="userForm.controls.lastName" />
+    <app-input-field label="Email" placeholder="" type="email" [control]="userForm.controls.email" />
+    <app-input-field label="Company" placeholder="" type="text" [control]="userForm.controls.company.controls.name" />
   </mat-dialog-content>
+
   <mat-dialog-actions>
     <button matButton (click)="onNoClick()">Cancel</button>
     @if(userService.isSubmitLoading()) {
-      <button  matButton="filled" disabled>
-        <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
-      </button>
+    <button matButton="filled" disabled>
+      <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
+    </button>
     }
-     @else {
-       <button matButton="filled" (click)="onSubmit()" cdkFocusInitial>{{ data.isAdd ? 'Submit' : 'Save changes' }}</button>
-     }
+    @else {
+    <button matButton="filled" (click)="onSubmit()" cdkFocusInitial>{{ data.isAdd ? 'Submit' : 'Save changes'
+      }}</button>
+    }
   </mat-dialog-actions>
 </form>
